@@ -1,4 +1,4 @@
-import { FaCheck} from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 import * as S from "./styles";
 import { StepProps } from "./type";
 
@@ -8,13 +8,13 @@ const Step: React.FC<StepProps> = ({ step }) => {
       <div>
         <div>
           <div>1</div>
-          -------------
+          <hr />
         </div>
       </div>
       <div>
         <div>
           <div>2</div>
-          -------------
+          <hr />
         </div>
       </div>
       <div>

@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import Image from "next/image";
-import logoportal from "../../../public/assets/portal.png";
+import logoportal from "../../../public/assets/portalPNG.png";
 import { useRouter } from "next/router";
 import { FaBars } from "react-icons/fa";
 import { useState } from "react";
@@ -14,7 +14,7 @@ const Header = () => {
     <S.Wrapper>
       <S.MainContainer>
         <S.Content>
-          <Image src={logoportal} width={180} height={60} alt="appLogo" />
+          <Image src={logoportal} width={150} height={170} alt="appLogo" />
           <S.ContentLeft>
             <S.Menu className="navbar">
               <li>
@@ -41,15 +41,15 @@ const Header = () => {
       </S.MainContainer>
       <S.MenuBar showMenu={showMenu}>
         <li>
-          <Link href="#" className={currentRoute === "/" ? "active" : "non-active"}>
+          <Link
+            href="#"
+            className={currentRoute === "/" ? "active" : "non-active"}
+          >
             Inicio
           </Link>
         </li>
         <li>
-          <a href="#">Escolas</a>
-        </li>
-        <li>
-          <a href="#">Inscrever/se</a>
+          <Link href={"/SearchSchool"}>Escolas</Link>
         </li>
       </S.MenuBar>
     </S.Wrapper>

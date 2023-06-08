@@ -8,7 +8,8 @@ export const SectionCard = styled.div`
   height: 100%;
   max-height: 40rem;
   background: #fff;
-  border: 1px solid #ddd;
+  //border: 1px solid #ddd;
+  background-color: #f3f3f3;
   border-radius: 0.4rem;
   display: flex;
   align-items: center;
@@ -18,20 +19,6 @@ export const SectionCard = styled.div`
   @media screen and (max-width: 894px) {
     width: 90%;
     min-width: 250px;
-  }
-
-  &:hover {
-    cursor: pointer;
-    filter: brightness(1);
-    transition: all 0.5s ease;
-
-    h2 {
-      font-weight: 400;
-    }
-
-    button {
-      opacity: 1;
-    }
   }
 `;
 export const ContainerImage = styled.div`
@@ -63,14 +50,15 @@ export const Title = styled.h2`
 `;
 
 export const Button = styled.button`
-  width: 15rem;
-  padding: 1rem 0;
-  outline: none;
+  margin: 1.5rem;
+  font-family: Comfortaa;
   border: none;
-  background: #003;
-  font-size: 1.5rem;
-  border-radius: 0.4rem;
+  background: none;
+  background-color: #161d26;
   color: #fff;
-  position: absolute;
-  top: 50%;
+  padding: 0.2rem 1rem;
+  font-size: 1.3rem;
+  height: 4rem;
+  width: 13rem;
+  cursor: pointer;
 `;

@@ -6,6 +6,7 @@ const nextConfig = {
     domains: [
       "example.com",
       "uploads-file-portal-das-escolas.s3.amazonaws.com",
+      "i.ibb.co",
     ],
   },
 };

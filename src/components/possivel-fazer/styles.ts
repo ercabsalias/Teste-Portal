@@ -4,14 +4,22 @@ export const Container = styled.div`
   background-color: #fff;
   width: 100%;
   display: flex;
+  align-items: center;
   flex-direction: column;
 `;
 
+export const Linha = styled.div`
+  width: 100%;
+  border: 0.1px solid #1c9deb;
+  width: 25rem;
+  height: 0;
+`;
+
 export const Title = styled.h1`
-  margin-top: 5rem;
+  margin-top: 10rem;
   text-align: center;
   font-family: Comfortaa;
-  font-weight: 300;
+
   padding: 1.8rem;
 
   &:before {

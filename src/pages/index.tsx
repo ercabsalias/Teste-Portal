@@ -2,10 +2,12 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Banner from "../components/banner";
 import PossivelSaber from "../components/possivel-fazer";
+import HomeStatus from "../components/homeStatus";
 import OfertaFormativa from "../components/oferta-formtiva";
 import ObjectivoApp from "../components/objectivo-app";
 import { Layout } from "../components/layout";
 import React from "react";
+import TypeAdmin from "../components/typeAdmin";
 import ShoolCardsContainer from "../components/shoolCardsContainer";
 import { getSchools } from "../services";
 import { ISchoolData } from "../types";
@@ -25,10 +27,16 @@ const Home: NextPage<HomeProps> = ({ data }) => {
           href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <link
+          href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+          rel="stylesheet"
+        />
       </Head>
       <React.Fragment>
         <Banner />
+        <HomeStatus />
         <PossivelSaber />
+        <TypeAdmin />
         <OfertaFormativa />
         <ObjectivoApp />
         <ShoolCardsContainer data={data} />

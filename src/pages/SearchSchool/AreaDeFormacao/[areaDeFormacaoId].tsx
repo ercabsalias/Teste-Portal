@@ -1,40 +1,43 @@
 import { GetStaticPropsContext, NextPage } from "next";
 import Head from "next/head";
 import React from "react";
-import { getTrainingAreabyId, getTrainingAreas } from "../../../services";
-import { IAreaDeFormacao } from "../../../types";
+import {
+  getTrainingAreabyId,
+  getTrainingAreas,
+  getSchool,
+} from "../../../services";
+import { IAreaDeFormacao, ISchoolData } from "../../../types";
 import { Layout } from "../../../components/layout";
 import { TrainingAreaView } from "../../../views/TrainingAreas";
 
 interface areaPageProps {
   area: IAreaDeFormacao;
+  school: ISchoolData;
 }
 
-const AreaDeFormacaoPage: NextPage<areaPageProps> = ({ area }) => {
+const AreaDeFormacaoPage: NextPage<areaPageProps> = ({ area, school }) => {
   return (
     <React.Fragment>
       <Head>
         <title>Area de formação</title>
       </Head>
       <React.Fragment>
-        <TrainingAreaView area={area} />
+        <TrainingAreaView area={area} school={school} />
       </React.Fragment>
     </React.Fragment>
   );
 };
 
-interface Props {
-  area: IAreaDeFormacao;
-}
-
 export async function getStaticProps(
   context: GetStaticPropsContext
-): Promise<{ props: Props }> {
+): Promise<{ props: areaPageProps }> {
   const id = context.params?.areaDeFormacaoId as string;
   const area = await getTrainingAreabyId(id);
+  const school = await getSchool(area.escolaId);
   return {
     props: {
       area,
+      school,
     },
   };
 }
@@ -59,5 +62,3 @@ Object.assign(AreaDeFormacaoPage, {
 });
 
 export default AreaDeFormacaoPage;
-
-///Teste

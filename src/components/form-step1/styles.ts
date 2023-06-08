@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
-export const Paragraph=styled.p`
-    font-weight: 500;
-    text-align: start;
-    max-width: 45rem;
-    margin: auto;
+export const Paragraph = styled.p`
+  width: 100%;
+
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
 `;
 
 export const FormCard = styled.div`
@@ -12,7 +13,7 @@ export const FormCard = styled.div`
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
   position: relative;
   margin: auto;
-  padding: 5rem 2rem;
+  padding: 5rem 12rem;
   bottom: 4rem;
   width: 70%;
   border-radius: 1rem;
@@ -22,63 +23,78 @@ export const FormCard = styled.div`
       padding: 1rem 0;
     }
   }
-  @media screen and (max-width: 820px) {
-    width: 99%;
+  @media screen and (max-width: 920px) {
+    width: 90%;
+    padding: 5rem 2rem;
   }
 `;
 
-export const FormContainer=styled.div`
-    display:flex ;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    input,select{
-        border: none;
-        border-bottom:.1px solid #cacaca;
-        margin-top: 2rem;
-        font-size: 1rem;
-        padding: 1.3rem;
-        width: 100%;
-        max-width: 45rem;
-        flex: 1;
-        font-size: 1.2rem;
-        ::placeholder{
-            font-weight: bolder;
-            color:#a9a6b3;
-        }
-        :focus{
-            border-bottom:.1px solid #1ba6e2;
-            transition: 2s ease-in-out;
-        }
+export const FormContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  input,
+  select {
+    width: 100%;
+    padding: 0 1.3rem;
+    height: 5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #d7d7d7;
+    background: #e7e9ee;
+
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+    outline: 0;
+    color: #847d7d;
+    ::placeholder {
+      font-weight: bolder;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      font-weight: 100;
+      color: #847d7d;
     }
-    select{
-        font-size: 1.5rem;
-        color:#a9a6b3;        
+    :focus {
+      border-bottom: 0.19px solid #1ba6e2;
+      //transition: 2s ease-in-out;
     }
-    button{
-        margin: 3rem 0;
-        border: none;
-        position: static;
-        width: 20rem;
-        border-radius: 4rem;
-        background: ${({ theme }) => theme.colors.primary.xblue};
-        text-align: center;
-        padding: 1.5rem 1rem;
-        font-size: ${({ theme }) => theme.font.sizes.small};
-        color: #fff;
-        :hover{
-            border-color: ${({ theme }) => theme.colors.primary.xblue};
-            border-color: var(--cui-input-focus-border-color, ${({ theme }) => theme.colors.primary.xblue});
-            box-shadow: 0 0 0 0.25rem rgb(20 31 255 / 25%);
-        }
+  }
+  select {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+    font-size: 1.5rem;
+    color: #847d7d;
+  }
+  button {
+    margin: 3rem 0;
+    border: none;
+    position: static;
+    font-family: Comfortaa;
+    width: 20rem;
+    border-radius: 4rem;
+    background: ${({ theme }) => theme.colors.primary.xblue};
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-size: ${({ theme }) => theme.font.sizes.small};
+    color: #fff;
+    :hover {
+      background-color: #1ba6e2;
     }
+  }
 `;
 
 export const ErrorMessage = styled.label`
-  color: #c70606;
+  width: 100%;
+  color: red;
   position: relative;
-  margin-left: 0.2rem;
+  //margin-left: 0.2rem;
   top: 0.3rem;
   font-weight: 400;
-  font-size: ${({ theme }) => theme.font.sizes.midle};
-`
+  font-size: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;

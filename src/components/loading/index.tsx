@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-import { Triangle, ThreeDots } from "react-loader-spinner";
+import { Triangle } from "react-loader-spinner";
 import * as S from "./styles";
 
 const loading: React.FC = () => {

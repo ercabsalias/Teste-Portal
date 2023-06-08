@@ -16,5 +16,5 @@ export const Content = styled.div`
 `;
 
 export const Main = styled.main`
-  margin-bottom: 3rem;
+  //margin-bottom: 3rem;
 `;

@@ -18,7 +18,6 @@ export const Content = styled.div`
   background: #fff !important;
   padding-bottom: 4rem;
   padding-top: 10rem;
-
   @media screen and (max-width: 768px) {
     padding-bottom: 20rem;
   }
@@ -36,7 +35,7 @@ export const FirstSection = styled.div`
     outline: 0;
     border: 0;
     width: 14em;
-    height: 3em;
+    height: 2.3em;
     line-height: 3;
     background: #fff;
     overflow: hidden;

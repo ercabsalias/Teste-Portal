@@ -53,12 +53,11 @@ export const SchoolCardSearch = ({ content }: ISchoolCardSearchProps) => {
             />
           ) : null}
         </S.ContainerImage>
+
         <S.Title>{content.nome}</S.Title>
-        {content.index === ishovering ? (
-          <S.Button onClick={() => router.push(`/SearchSchool/${content.id}`)}>
-            Ver Perfil
-          </S.Button>
-        ) : null}
+        <S.Button onClick={() => router.push(`/SearchSchool/${content.id}`)}>
+          Ver Perfil
+        </S.Button>
       </S.SectionCard>
     </>
   );

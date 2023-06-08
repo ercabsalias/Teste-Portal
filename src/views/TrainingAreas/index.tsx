@@ -1,62 +1,109 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
-import React from "react";
-import { Card } from "../../components/card";
+import * as S from "../School-Profile/styles";
+
 import { useFetch } from "../../hooks/useFetch";
-import { IAreaDeFormacao } from "../../types";
-import * as S from "./styles"
+import { ISchoolData, IAreaDeFormacao } from "../../types";
+
+import { Card } from "../../components/card";
+import { useRouter } from "next/router";
+import Router from "next/router";
+import { useState } from "react";
 
 interface Props {
-    area: IAreaDeFormacao
+  area: IAreaDeFormacao;
+  school: ISchoolData;
 }
 
-const TrainingAreaView:React.FC<Props> = ( { area }) =>{
-    const router = useRouter()
-    const { data } = useFetch(`/file/${area.fotoUrl}`)    
+const TrainingAreaView: React.FC<Props> = ({ area, school }) => {
+  const {
+    query: { id },
+  } = useRouter();
 
-    return(
-        <>
-            <S.Container>
-                <S.Content>
-                    <S.FirstSection>
-                        <S.ContainerImage>
-                            {data?.link ? (<Image layout="responsive" loader={() => data.link} src={data.link}  width={490} height={500} alt="escola"/>) : null}
-                        </S.ContainerImage>
-                        <S.ContainerLeft>
-                            <S.Title>
-                                Área de {area.nome}
-                            </S.Title>
-                            <span>Categoria: {area?.Categoria?.nome}</span>
-                            <p>
-                                {area.descricao}
-                            </p>
-                        </S.ContainerLeft>
-                    </S.FirstSection>
-                    <S.SecondSection>
-                        <S.Title>
-                            Nossos Cursos
-                        </S.Title>
-                        <S.ContainerCard>
-                            {area.Curso?.map((curso) => (
-                                <Card key={curso.id} content={curso} onClick = {() => router.push(`/SearchSchool/Curso/${curso.id}`)} />
-                            ))}
-                        </S.ContainerCard>
-                    </S.SecondSection>
-                    <S.SecondSection>
-                        <S.Title>
-                            Perfis de Saidas
-                        </S.Title>
-                        <S.ContainerCard>
-                            {area.PerfilDeSaida?.map((profile) => (
-                                <Card key={profile.id} content={profile} onClick={() => router.push(`/SearchSchool/PerfilDeSaida/${profile.id}`)}  />
-                            ))}
-                        </S.ContainerCard>
-                    </S.SecondSection>
-                </S.Content>
-            </S.Container>
-        </>
-    );
-}
+  const handleRedirect = () => {
+    Router.push({
+      pathname: "/inscricao",
+      query: { escolaId: id },
+    });
+  };
 
-// onClick = {() => router.push(`/SearchSchool/AreaDeFormacao/${area.id}`)} 
-export { TrainingAreaView }
+  // const { data, error} = useSWR('/file/', () => fetchData(school))
+  const { data: fotoUrl } = useFetch(`/file/${school?.fotoUrl}`);
+  const { data: logoUrl } = useFetch(`/file/${school?.logo}`);
+  const router = useRouter();
+  const { data } = useFetch(`/file/${area.fotoUrl}`);
+
+  return (
+    <S.Container>
+      <S.CardBackground backgroundCapa={fotoUrl?.link}>
+        <S.Opacity>
+          <div>
+            <h2>MED</h2>
+          </div>
+          <S.ButtonSubscribe onClick={() => handleRedirect()}>
+            Inscrever-se
+          </S.ButtonSubscribe>
+        </S.Opacity>
+      </S.CardBackground>
+      <S.MainContainer>
+        <S.MenuContainer>
+          <S.UserSide>
+            <div>
+              {logoUrl ? (
+                <Image
+                  src={logoUrl?.link}
+                  alt="escola"
+                  width={82}
+                  height={80}
+                  loading="lazy"
+                />
+              ) : null}
+            </div>
+            <S.SchoolName>
+              <S.Title>{school?.nome}</S.Title>
+              <S.SectionDescription>
+                <span>Localização: </span>
+                <span>
+                  {" "}
+                  {school?.Localizacao?.endereco1} /{" "}
+                  {school?.Localizacao?.Provincia.nome}
+                </span>
+              </S.SectionDescription>
+              <S.SectionDescription>
+                <span>Categoria: {school?.Categoria?.nome}</span>
+              </S.SectionDescription>
+            </S.SchoolName>
+          </S.UserSide>
+          <S.Nav>
+            <h1>Área de {area.nome}</h1>
+          </S.Nav>
+        </S.MenuContainer>
+        <S.Wrapper>
+          <S.LeftSide>
+            <S.AreaFormacao>
+              <div className="Title">
+                <h2>Cursos de {area.nome}</h2>
+              </div>
+              <S.CardAreaFormacao>
+                {area.Curso?.map((curso) => (
+                  <Card
+                    key={curso.id}
+                    content={curso}
+                    onClick={() =>
+                      router.push(`/SearchSchool/Curso/${curso.id}`)
+                    }
+                  />
+                ))}
+              </S.CardAreaFormacao>
+              <S.PageTable>
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+              </S.PageTable>
+            </S.AreaFormacao>
+          </S.LeftSide>
+        </S.Wrapper>
+      </S.MainContainer>
+    </S.Container>
+  );
+};
+export { TrainingAreaView };

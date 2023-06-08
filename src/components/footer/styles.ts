@@ -7,7 +7,6 @@ export const Container = styled.footer`
   flex-direction: column;
   justify-content: end;
   width: 100%;
-  height: auto;
 `;
 
 export const FooterInformations = styled.div`
@@ -32,10 +31,11 @@ export const InfoContainer = styled.div`
 export const PortalSocialMedia = styled.div`
   max-width: 25rem;
   p {
-    text-align: center;
+    text-align: justify;
     margin: ${({ theme }) => theme.spacings.xxmultipleeight} 0;
     color: ${({ theme }) => theme.colors.tertiary.xxcinza};
     font-size: ${({ theme }) => theme.font.sizes.small};
+    line-height: 2rem;
   }
   div {
     display: flex;

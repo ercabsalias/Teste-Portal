@@ -6,6 +6,7 @@ import { schools } from "./mock";
 import { RxTriangleDown } from "react-icons/rx";
 import { CiSearch } from "react-icons/ci";
 import * as S from "./styles";
+import * as P from "../School-Profile/styles";
 
 type ISchool = [
   {
@@ -65,6 +66,11 @@ export function SearchSchoolView({ data }: any) {
                   <SchoolCardSearch key={school.id} content={school} />
                 ))}
           </S.SecondSection>
+          <P.PageTable>
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+          </P.PageTable>
         </S.Content>
       </S.Container>
     </>

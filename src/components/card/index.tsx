@@ -21,14 +21,17 @@ export const Card: React.FC<Props> = ({ content, onClick }) => {
           <Image
             loader={() => data.link}
             src={data.link}
-            width={100}
+            width={115}
             height={80}
             alt="escola"
             layout="responsive"
           />
         ) : null}
       </div>
-      <span>{content.nome}</span>
+      <section>
+        <span>{content.nome}</span>
+        <button type="button">SABER MAIS</button>
+      </section>
     </S.Card>
   );
 };
